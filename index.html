@@ -4,39 +4,219 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <title>Shmaluguls Biblioteca</title>
     <style>
-        :root { --primary: #4f46e5; --secondary: #6366f1; --bg: #f4f6fb; --card: #ffffff; --text: #1f2937; --muted: #6b7280; --danger: #dc2626; }
-        * { box-sizing: border-box; font-family: "Segoe UI", sans-serif; }
-        body { margin: 0; background: var(--bg); display: flex; }
-        aside { width: 230px; background: linear-gradient(180deg,var(--primary),var(--secondary)); color: white; min-height: 100vh; padding: 20px; }
-        aside h2 { margin-bottom: 30px; text-align: center; }
-        aside button { width: 100%; padding: 10px; margin-bottom: 10px; border: none; border-radius: 8px; background: rgba(255,255,255,0.15); color: white; cursor: pointer; font-size: 15px; }
-        aside button:hover { background: rgba(255,255,255,0.3); }
-        main { flex: 1; padding: 30px; }
-        .hero { display: flex; gap: 20px; align-items: center; margin-bottom: 25px; }
-        .hero img { width: 180px; border-radius: 12px; box-shadow: 0 10px 20px rgba(0,0,0,.15); }
-        .hero div p { color: var(--muted); }
-        .card { background: var(--card); padding: 20px; border-radius: 14px; box-shadow: 0 10px 25px rgba(0,0,0,.05); margin-bottom: 25px; }
-        input { width: 100%; padding: 10px; margin-bottom: 10px; border-radius: 8px; border: 1px solid #ddd; }
-        button.action { background: var(--primary); color: white; border: none; padding: 10px 15px; border-radius: 8px; cursor: pointer; margin-right: 5px; }
-        button.action.danger { background: var(--danger); }
-        button.action:hover { opacity: .9; }
-        table { width: 100%; border-collapse: collapse; }
-        th, td { padding: 10px; border-bottom: 1px solid #eee; }
-        .hidden { display: none; }
-        .cards-inicio { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-top: 30px; }
-        .card-info { background: var(--card); border-radius: 14px; overflow: hidden; box-shadow: 0 10px 25px rgba(0,0,0,.05); transition: transform .2s ease; }
-        .card-info:hover { transform: translateY(-5px); }
-        .card-info img { width: 100%; height: 160px; object-fit: cover; }
-        .card-info h3 { margin: 15px 15px 5px; }
-        .card-info p { margin: 0 15px 20px; color: var(--muted); font-size: 14px; }
-        .info-inicio { display: contents; grid-template-columns: repeat(3, 1fr); margin-top: 80px; background: var(--card); border-radius: 14px; height: 220px; overflow: hidden; }
-        .info-col { display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 20px; text-align: center; }
-        .info-col:not(:last-child) { border-right: 1px solid #e5e7eb; }
-        .info-col h3 { margin: 0 0 10px; color: var(--primary); }
-        .info-col p { margin: 0; font-size: 14px; color: var(--muted); max-width: 220px; }
-        .icon-nav { display: flex; justify-content: space-between; margin-bottom: 25px; }
-        .icon-nav button { flex: 1; margin: 0 3px; height: 42px; border: none; border-radius: 10px; background: rgba(255,255,255,.2); color: white; font-size: 20px; cursor: pointer; transition: all .2s ease; }
-        .icon-nav button:hover { background: rgba(255,255,255,.35); transform: translateY(-2px); }
+        :root {
+            --primary: #4f46e5;
+            --secondary: #6366f1;
+            --bg: #f4f6fb;
+            --card: #ffffff;
+            --text: #1f2937;
+            --muted: #6b7280;
+            --danger: #dc2626;
+        }
+
+        * {
+            box-sizing: border-box;
+            font-family: "Segoe UI", sans-serif;
+        }
+
+        body {
+            margin: 0;
+            background: var(--bg);
+            display: flex;
+        }
+
+        aside {
+            width: 230px;
+            background: linear-gradient(180deg,var(--primary),var(--secondary));
+            color: white;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+            aside h2 {
+                margin-bottom: 30px;
+                text-align: center;
+            }
+
+            aside button {
+                width: 100%;
+                padding: 10px;
+                margin-bottom: 10px;
+                border: none;
+                border-radius: 8px;
+                background: rgba(255,255,255,0.15);
+                color: white;
+                cursor: pointer;
+                font-size: 15px;
+            }
+
+                aside button:hover {
+                    background: rgba(255,255,255,0.3);
+                }
+
+        main {
+            flex: 1;
+            padding: 30px;
+        }
+
+        .hero {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+            margin-bottom: 25px;
+        }
+
+            .hero img {
+                width: 180px;
+                border-radius: 12px;
+                box-shadow: 0 10px 20px rgba(0,0,0,.15);
+            }
+
+            .hero div p {
+                color: var(--muted);
+            }
+
+        .card {
+            background: var(--card);
+            padding: 20px;
+            border-radius: 14px;
+            box-shadow: 0 10px 25px rgba(0,0,0,.05);
+            margin-bottom: 25px;
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border-radius: 8px;
+            border: 1px solid #ddd;
+        }
+
+        button.action {
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 8px;
+            cursor: pointer;
+            margin-right: 5px;
+        }
+
+            button.action.danger {
+                background: var(--danger);
+            }
+
+            button.action:hover {
+                opacity: .9;
+            }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            padding: 10px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        .cards-inicio {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .card-info {
+            background: var(--card);
+            border-radius: 14px;
+            overflow: hidden;
+            box-shadow: 0 10px 25px rgba(0,0,0,.05);
+            transition: transform .2s ease;
+        }
+
+            .card-info:hover {
+                transform: translateY(-5px);
+            }
+
+            .card-info img {
+                width: 100%;
+                height: 160px;
+                object-fit: cover;
+            }
+
+            .card-info h3 {
+                margin: 15px 15px 5px;
+            }
+
+            .card-info p {
+                margin: 0 15px 20px;
+                color: var(--muted);
+                font-size: 14px;
+            }
+
+        .info-inicio {
+            display: contents;
+            grid-template-columns: repeat(3, 1fr);
+            margin-top: 80px;
+            background: var(--card);
+            border-radius: 14px;
+            height: 220px;
+            overflow: hidden;
+        }
+
+        .info-col {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            text-align: center;
+        }
+
+            .info-col:not(:last-child) {
+                border-right: 1px solid #e5e7eb;
+            }
+
+            .info-col h3 {
+                margin: 0 0 10px;
+                color: var(--primary);
+            }
+
+            .info-col p {
+                margin: 0;
+                font-size: 14px;
+                color: var(--muted);
+                max-width: 220px;
+            }
+
+        .icon-nav {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 25px;
+        }
+
+            .icon-nav button {
+                flex: 1;
+                margin: 0 3px;
+                height: 42px;
+                border: none;
+                border-radius: 10px;
+                background: rgba(255,255,255,.2);
+                color: white;
+                font-size: 20px;
+                cursor: pointer;
+                transition: all .2s ease;
+            }
+
+                .icon-nav button:hover {
+                    background: rgba(255,255,255,.35);
+                    transform: translateY(-2px);
+                }
     </style>
 </head>
 
@@ -76,7 +256,7 @@
                     <p>Somos estudiantes dedicados a facilitar el acceso al conocimiento.</p>
                 </div>
                 <div class="card-info">
-                    <img src="https://images.unsplash.com/photo-1507842217153-e21f60d7cf40?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Libros">
+                    <img src="https://biblioteca.ulpgc.es/sites/default/files/attachments_files/espacio_violeta/Libros-cat%C3%A1logo-Espacio-Violeta.jpg" alt="Libros">
                     <h3>Catálogo</h3>
                     <p>Colección variada de libros académicos.</p>
                 </div>
@@ -92,6 +272,7 @@
                     </div>
                     <div class="info-col">
                         <h3>Dirección</h3>
+                        <p><a href="https://maps.app.goo.gl/JX9uKjpDbbzcJBha7?g_st=ipc">Ver Ubicacion</a></p>
                         <p>📍 Av. Alemana, 6to anillo<br>Santa Cruz, Bolivia</p>
                     </div>
                     <div class="info-col">
@@ -109,6 +290,7 @@
             <input id="inputIsbn" placeholder="ISBN">
             <button class="action" onclick="agregarLibro()">Agregar libro</button>
             <button class="action danger" onclick="eliminarLibro()">Eliminar libro</button>
+            <button class="action danger" onclick="eliminarTodosLibros()">Eliminar todos los libros</button>
             <div id="divListaLibros"></div>
         </section>
 
@@ -146,7 +328,7 @@
     </main>
 
     <script>
-        /* ===== CLASES LÓGICAS ===== */
+        /* CLASES LÓGICAS (POO) */
         class Material {
             constructor(titulo) {
                 this.titulo = titulo;
@@ -154,7 +336,7 @@
             }
         }
 
-        class Libro extends Material {
+        class Libro extends Material { // Her
             constructor(t, a, i, d = true) {
                 super(t);
                 this.autor = a;
@@ -162,8 +344,8 @@
                 this.disponible = d;
             }
 
-            // SIMULACIÓN DE DESTRUCTOR PARA PROYECTO
-            destructor() {
+            // En
+            destructor() { //Des
                 console.warn(`[MEMORIA] Ejecutando destructor para libro: ${this.titulo}`);
                 console.warn(`[MEMORIA] Liberando recursos asociados al ISBN: ${this.isbn}`);
                 // Limpiar referencias
@@ -173,27 +355,32 @@
                 this.disponible = null;
                 console.log(`[MEMORIA] Memoria liberada correctamente.`);
             }
-
-            info() {
-                if(!this.titulo) return "--- Elemento Eliminado ---";
-                return `📘 <b>${this.titulo}</b> - ${this.autor} 
-                <span style="color:${this.disponible ? 'green' : 'red'}">
-                (${this.disponible ? 'Disponible' : 'Prestado'})</span>`;
+            info() { // En
+                if (!this.titulo) return "--- Elemento Eliminado ---";
+                return `
+            📘 <b>${this.titulo}</b>
+            Autor: <b>${this.autor}</b>
+            ISBN: <b>${this.isbn}</b>
+            <span style="color:${this.disponible ? 'green' : 'red'}">
+                (${this.disponible ? 'Disponible' : 'Prestado'})
+            </span>
+        `;
             }
+
         }
 
-        /* ===== ESTRUCTURA DE DATOS (LISTA ENLAZADA) ===== */
+        /* ESTRUCTURA DE DATOS */
         class Nodo {
             constructor(d) { this.dato = d; this.next = null; }
         }
-        
+
         class Lista {
-            constructor() { this.head = null; }
+            constructor() { this.head = null; } //Cons
             add(d) {
                 const n = new Nodo(d);
                 n.next = this.head;
                 this.head = n;
-            }
+            } // Recur
             each(cb, n = this.head) {
                 if (!n) return;
                 cb(n.dato);
@@ -211,7 +398,7 @@
             }
         }
 
-        /* ===== GESTIÓN DE VARIABLES GLOBALES (RENOMBRADAS PARA EVITAR ERRORES) ===== */
+        /* GESTIÓN DE VARIABLES GLOBALES (RENOMBRADAS PARA EVITAR ERRORES) */
         // IMPORTANTE: Se cambió 'libros' por 'inventarioLibros' para no chocar con el ID del HTML
         const inventarioLibros = new Lista();
         let registroSocios = JSON.parse(localStorage.getItem("socios")) || [];
@@ -221,14 +408,14 @@
         (JSON.parse(localStorage.getItem("libros")) || []).forEach(l => {
             inventarioLibros.add(new Libro(l.titulo, l.autor, l.isbn, l.disponible));
         });
-
+        /* LocalStorage */
         function guardarDatos() {
             localStorage.setItem("libros", JSON.stringify(inventarioLibros.toArray()));
             localStorage.setItem("socios", JSON.stringify(registroSocios));
             localStorage.setItem("historial", JSON.stringify(registroHistorial));
         }
 
-        /* ===== FUNCIONES DE INTERFAZ ===== */
+        /* FUNCIONES DE INTERFAZ */
         function mostrar(idSeccion) {
             document.querySelectorAll("section").forEach(s => s.classList.add("hidden"));
             document.getElementById(idSeccion).classList.remove("hidden");
@@ -244,11 +431,17 @@
             const i = getVal('inputIsbn');
 
             if (!t || !i) return alert("Complete título e ISBN");
-            
+
             inventarioLibros.add(new Libro(t, a, i));
+            registroHistorial.push({
+                fecha: new Date().toLocaleTimeString(),
+                accion: "Agregar libro",
+                libro: t,
+                socio: "-"
+            });
             guardarDatos();
             alert("📘 Libro agregado correctamente");
-            
+
             setVal('inputTitulo', '');
             setVal('inputAutor', '');
             setVal('inputIsbn', '');
@@ -261,17 +454,17 @@
 
             if (!n || !id) return alert("Complete nombre e ID");
 
-            registroSocios.push({ nombre: n, id: id, libros: [] });
+            registroSocios.push({ nombre: n, id: id, libros: [] }); //Relacion
             guardarDatos();
             alert("👤 Socio registrado");
-            
+
             setVal('inputNombreSocio', '');
             setVal('inputIdSocio', '');
             renderizar();
         }
 
         function prestar() {
-            const isbn = getVal('inputIsbnPrestamo');
+            const isbn = getVal('inputIsbnPrestamo');sdA
             const id = getVal('inputIdPrestamo');
 
             const l = inventarioLibros.find(x => x.isbn === isbn);
@@ -279,12 +472,12 @@
 
             if (l && s && l.disponible) {
                 l.disponible = false;
-                s.libros.push(l.isbn);
-                registroHistorial.push({ 
-                    fecha: new Date().toLocaleTimeString(), 
-                    accion: "Préstamo", 
-                    libro: l.titulo, 
-                    socio: s.nombre 
+                s.libros.push(l.isbn); // Relacion
+                registroHistorial.push({ // rgst Dependencia
+                    fecha: new Date().toLocaleTimeString(),
+                    accion: "Préstamo",
+                    libro: l.titulo,
+                    socio: s.nombre
                 });
                 guardarDatos();
                 alert("📕 Préstamo exitoso");
@@ -303,12 +496,12 @@
 
             if (l && s) {
                 l.disponible = true;
-                s.libros = s.libros.filter(code => code !== l.isbn);
-                registroHistorial.push({ 
-                    fecha: new Date().toLocaleTimeString(), 
-                    accion: "Devolución", 
-                    libro: l.titulo, 
-                    socio: s.nombre 
+                s.libros = s.libros.filter(code => code !== l.isbn); //Relacion
+                registroHistorial.push({ // rgst Dependencia
+                    fecha: new Date().toLocaleTimeString(),
+                    accion: "Devolución",
+                    libro: l.titulo,
+                    socio: s.nombre
                 });
                 guardarDatos();
                 alert("📗 Devolución exitosa");
@@ -319,14 +512,14 @@
         }
 
         function limpiarHistorial() {
-            if(confirm("¿Borrar todo el historial?")) {
+            if (confirm("¿Borrar todo el historial?")) {
                 registroHistorial = [];
                 guardarDatos();
                 renderizar();
             }
         }
 
-        /* --- LÓGICA DE ELIMINACIÓN Y MEMORIA --- */
+        /* LÓGICA DE ELIMINACIÓN Y MEMORIA (D) */
         function eliminarLibro() {
             const codigo = getVal('inputIsbn');
             if (!codigo) return alert("Ingrese el ISBN a eliminar");
@@ -336,9 +529,13 @@
             let actual = inventarioLibros.head;
             let anterior = null;
             let encontrado = false;
+            let tituloLibro = "";
 
             while (actual) {
                 if (actual.dato.isbn === codigo) {
+                    // Guardar título antes de destruir
+                    tituloLibro = actual.dato.titulo;
+
                     // 1. Destructor explícito (Simulación C++)
                     actual.dato.destructor();
 
@@ -352,7 +549,7 @@
                     // 3. Liberación nodo
                     actual.next = null;
                     actual = null;
-                    
+
                     console.log("[SISTEMA] Nodo eliminado de la lista enlazada.");
                     encontrado = true;
                     break;
@@ -362,6 +559,12 @@
             }
 
             if (encontrado) {
+                registroHistorial.push({
+                    fecha: new Date().toLocaleTimeString(),
+                    accion: "Eliminar libro",
+                    libro: tituloLibro,
+                    socio: "-"
+                });
                 guardarDatos();
                 alert("🗑 Libro eliminado y memoria liberada");
                 renderizar();
@@ -372,11 +575,11 @@
 
         function eliminarSocio() {
             const id = getVal('inputIdSocio');
-            if(!id) return alert("Ingrese ID");
-            
+            if (!id) return alert("Ingrese ID");
+
             const idx = registroSocios.findIndex(s => s.id == id);
             if (idx === -1) return alert("Socio no encontrado");
-            
+
             if (registroSocios[idx].libros.length > 0) return alert("Tiene libros pendientes");
 
             registroSocios.splice(idx, 1);
@@ -389,7 +592,7 @@
             const divL = document.getElementById('divListaLibros');
             divL.innerHTML = "";
             inventarioLibros.each(l => {
-                if(l && l.titulo) divL.innerHTML += l.info() + "<br>";
+                if (l && l.titulo) divL.innerHTML += l.info() + "<br>";
             });
 
             const divS = document.getElementById('divListaSocios');
@@ -397,8 +600,8 @@
 
             const tbody = document.getElementById('tablaHistorial');
             tbody.innerHTML = registroHistorial.map(h => `
-                <tr><td>${h.fecha}</td><td>${h.accion}</td><td>${h.libro}</td><td>${h.socio}</td></tr>
-            `).join("");
+                    <tr><td>${h.fecha}</td><td>${h.accion}</td><td>${h.libro}</td><td>${h.socio}</td></tr>
+                `).join("");
         }
 
         // Iniciar
