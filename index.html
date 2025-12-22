@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>Shmaluguls Biblioteca</title>
+    <style>
+        :root { --primary: #4f46e5; --secondary: #6366f1; --bg: #f4f6fb; --card: #ffffff; --text: #1f2937; --muted: #6b7280; --danger: #dc2626; }
+        * { box-sizing: border-box; font-family: "Segoe UI", sans-serif; }
+        body { margin: 0; background: var(--bg); display: flex; }
+        aside { width: 230px; background: linear-gradient(180deg,var(--primary),var(--secondary)); color: white; min-height: 100vh; padding: 20px; }
+        aside h2 { margin-bottom: 30px; text-align: center; }
+        aside button { width: 100%; padding: 10px; margin-bottom: 10px; border: none; border-radius: 8px; background: rgba(255,255,255,0.15); color: white; cursor: pointer; font-size: 15px; }
+        aside button:hover { background: rgba(255,255,255,0.3); }
+        main { flex: 1; padding: 30px; }
+        .hero { display: flex; gap: 20px; align-items: center; margin-bottom: 25px; }
+        .hero img { width: 180px; border-radius: 12px; box-shadow: 0 10px 20px rgba(0,0,0,.15); }
+        .hero div p { color: var(--muted); }
+        .card { background: var(--card); padding: 20px; border-radius: 14px; box-shadow: 0 10px 25px rgba(0,0,0,.05); margin-bottom: 25px; }
+        input { width: 100%; padding: 10px; margin-bottom: 10px; border-radius: 8px; border: 1px solid #ddd; }
+        button.action { background: var(--primary); color: white; border: none; padding: 10px 15px; border-radius: 8px; cursor: pointer; margin-right: 5px; }
+        button.action.danger { background: var(--danger); }
+        button.action:hover { opacity: .9; }
+        table { width: 100%; border-collapse: collapse; }
+        th, td { padding: 10px; border-bottom: 1px solid #eee; }
+        .hidden { display: none; }
+        .cards-inicio { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-top: 30px; }
+        .card-info { background: var(--card); border-radius: 14px; overflow: hidden; box-shadow: 0 10px 25px rgba(0,0,0,.05); transition: transform .2s ease; }
+        .card-info:hover { transform: translateY(-5px); }
+        .card-info img { width: 100%; height: 160px; object-fit: cover; }
+        .card-info h3 { margin: 15px 15px 5px; }
+        .card-info p { margin: 0 15px 20px; color: var(--muted); font-size: 14px; }
+        .info-inicio { display: contents; grid-template-columns: repeat(3, 1fr); margin-top: 80px; background: var(--card); border-radius: 14px; height: 220px; overflow: hidden; }
+        .info-col { display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 20px; text-align: center; }
+        .info-col:not(:last-child) { border-right: 1px solid #e5e7eb; }
+        .info-col h3 { margin: 0 0 10px; color: var(--primary); }
+        .info-col p { margin: 0; font-size: 14px; color: var(--muted); max-width: 220px; }
+        .icon-nav { display: flex; justify-content: space-between; margin-bottom: 25px; }
+        .icon-nav button { flex: 1; margin: 0 3px; height: 42px; border: none; border-radius: 10px; background: rgba(255,255,255,.2); color: white; font-size: 20px; cursor: pointer; transition: all .2s ease; }
+        .icon-nav button:hover { background: rgba(255,255,255,.35); transform: translateY(-2px); }
+    </style>
+</head>
+
+<body>
+
+    <aside>
+        <h2>📚 Shmaluguls</h2>
+        <div class="icon-nav">
+            <button onclick="mostrar('inicio')" title="Inicio">🏠</button>
+            <button onclick="mostrar('libros')" title="Libros">📘</button>
+            <button onclick="mostrar('historial')" title="Historial">🕒</button>
+        </div>
+
+        <button onclick="mostrar('inicio')">Inicio</button>
+        <button onclick="mostrar('libros')">Libros</button>
+        <button onclick="mostrar('socios')">Socios</button>
+        <button onclick="mostrar('prestamos')">Préstamos</button>
+    </aside>
+
+    <main>
+        <section id="inicio" class="hidden">
+            <div class="hero">
+                <img src="https://images.unsplash.com/photo-1524995997946-a1c2e315a42f?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Biblioteca">
+                <div>
+                    <h1>Biblioteca Digital</h1>
+                    <p>Sistema moderno de gestión de biblioteca</p>
+                </div>
+            </div>
+            <div class="card">
+                <p>Nuestra biblioteca facilita al usuario el acceso a material bibliográfico de calidad.</p>
+                <p>A través de este sistema podremos consultar el catálogo y gestionar préstamos.</p>
+            </div>
+            <div class="cards-inicio">
+                <div class="card-info">
+                    <img src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png" alt="Usuarios">
+                    <h3>¿Quiénes somos?</h3>
+                    <p>Somos estudiantes dedicados a facilitar el acceso al conocimiento.</p>
+                </div>
+                <div class="card-info">
+                    <img src="https://images.unsplash.com/photo-1507842217153-e21f60d7cf40?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Libros">
+                    <h3>Catálogo</h3>
+                    <p>Colección variada de libros académicos.</p>
+                </div>
+                <div class="card-info">
+                    <img src="https://cdn-icons-png.flaticon.com/512/10691/10691802.png" alt="Eventos">
+                    <h3>Eventos</h3>
+                    <p>Presentación final el 22 de diciembre del 2025.</p>
+                </div>
+                <div class="info-inicio">
+                    <div class="info-col">
+                        <h3>Nosotros</h3>
+                        <p>Juan David Denker Ortega <br> Jose Leonardo Parada <br> Alexis Camacho Dorado</p>
+                    </div>
+                    <div class="info-col">
+                        <h3>Dirección</h3>
+                        <p>📍 Av. Alemana, 6to anillo<br>Santa Cruz, Bolivia</p>
+                    </div>
+                    <div class="info-col">
+                        <h3>Contacto</h3>
+                        <p>📧 contacto@shmaluguls.edu<br>☎️ +591 76072087</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="libros" class="card">
+            <h2>📘 Libros</h2>
+            <input id="inputTitulo" placeholder="Título">
+            <input id="inputAutor" placeholder="Autor">
+            <input id="inputIsbn" placeholder="ISBN">
+            <button class="action" onclick="agregarLibro()">Agregar libro</button>
+            <button class="action danger" onclick="eliminarLibro()">Eliminar libro</button>
+            <div id="divListaLibros"></div>
+        </section>
+
+        <section id="socios" class="card hidden">
+            <h2>👤 Socios</h2>
+            <input id="inputNombreSocio" placeholder="Nombre">
+            <input id="inputIdSocio" type="number" placeholder="ID">
+            <button class="action" onclick="agregarSocio()">Registrar socio</button>
+            <button class="action danger" onclick="eliminarSocio()">Eliminar socio</button>
+            <div id="divListaSocios"></div>
+        </section>
+
+        <section id="prestamos" class="card hidden">
+            <h2>🔁 Préstamos / Devoluciones</h2>
+            <input id="inputIsbnPrestamo" placeholder="ISBN del libro">
+            <input id="inputIdPrestamo" type="number" placeholder="ID del socio">
+            <button class="action" onclick="prestar()">Prestar</button>
+            <button class="action" onclick="devolver()">Devolver</button>
+        </section>
+
+        <section id="historial" class="card hidden">
+            <h2>🕒 Historial</h2>
+            <button class="action danger" onclick="limpiarHistorial()">Eliminar historial</button>
+            <table>
+                <thead>
+                    <tr><th>Fecha</th><th>Acción</th><th>Libro</th><th>Socio</th></tr>
+                </thead>
+                <tbody id="tablaHistorial"></tbody>
+            </table>
+        </section>
+
+        <footer class="card" style="margin-top:40px; text-align:center;">
+            <p>© 2025 Biblioteca Digital · Desarrollado por Shmaluguls</p>
+        </footer>
+    </main>
+
+    <script>
+        /* ===== CLASES LÓGICAS ===== */
+        class Material {
+            constructor(titulo) {
+                this.titulo = titulo;
+                this.disponible = true;
+            }
+        }
+
+        class Libro extends Material {
+            constructor(t, a, i, d = true) {
+                super(t);
+                this.autor = a;
+                this.isbn = i;
+                this.disponible = d;
+            }
+
+            // SIMULACIÓN DE DESTRUCTOR PARA PROYECTO
+            destructor() {
+                console.warn(`[MEMORIA] Ejecutando destructor para libro: ${this.titulo}`);
+                console.warn(`[MEMORIA] Liberando recursos asociados al ISBN: ${this.isbn}`);
+                // Limpiar referencias
+                this.titulo = null;
+                this.autor = null;
+                this.isbn = null;
+                this.disponible = null;
+                console.log(`[MEMORIA] Memoria liberada correctamente.`);
+            }
+
+            info() {
+                if(!this.titulo) return "--- Elemento Eliminado ---";
+                return `📘 <b>${this.titulo}</b> - ${this.autor} 
+                <span style="color:${this.disponible ? 'green' : 'red'}">
+                (${this.disponible ? 'Disponible' : 'Prestado'})</span>`;
+            }
+        }
+
+        /* ===== ESTRUCTURA DE DATOS (LISTA ENLAZADA) ===== */
+        class Nodo {
+            constructor(d) { this.dato = d; this.next = null; }
+        }
+        
+        class Lista {
+            constructor() { this.head = null; }
+            add(d) {
+                const n = new Nodo(d);
+                n.next = this.head;
+                this.head = n;
+            }
+            each(cb, n = this.head) {
+                if (!n) return;
+                cb(n.dato);
+                this.each(cb, n.next);
+            }
+            find(f) {
+                let a = this.head;
+                while (a) { if (f(a.dato)) return a.dato; a = a.next; }
+                return null;
+            }
+            toArray() {
+                const r = [];
+                this.each(d => r.push(d));
+                return r;
+            }
+        }
+
+        /* ===== GESTIÓN DE VARIABLES GLOBALES (RENOMBRADAS PARA EVITAR ERRORES) ===== */
+        // IMPORTANTE: Se cambió 'libros' por 'inventarioLibros' para no chocar con el ID del HTML
+        const inventarioLibros = new Lista();
+        let registroSocios = JSON.parse(localStorage.getItem("socios")) || [];
+        let registroHistorial = JSON.parse(localStorage.getItem("historial")) || [];
+
+        // Cargar datos persistentes
+        (JSON.parse(localStorage.getItem("libros")) || []).forEach(l => {
+            inventarioLibros.add(new Libro(l.titulo, l.autor, l.isbn, l.disponible));
+        });
+
+        function guardarDatos() {
+            localStorage.setItem("libros", JSON.stringify(inventarioLibros.toArray()));
+            localStorage.setItem("socios", JSON.stringify(registroSocios));
+            localStorage.setItem("historial", JSON.stringify(registroHistorial));
+        }
+
+        /* ===== FUNCIONES DE INTERFAZ ===== */
+        function mostrar(idSeccion) {
+            document.querySelectorAll("section").forEach(s => s.classList.add("hidden"));
+            document.getElementById(idSeccion).classList.remove("hidden");
+            renderizar();
+        }
+
+        function getVal(id) { return document.getElementById(id).value; }
+        function setVal(id, v) { document.getElementById(id).value = v; }
+
+        function agregarLibro() {
+            const t = getVal('inputTitulo');
+            const a = getVal('inputAutor');
+            const i = getVal('inputIsbn');
+
+            if (!t || !i) return alert("Complete título e ISBN");
+            
+            inventarioLibros.add(new Libro(t, a, i));
+            guardarDatos();
+            alert("📘 Libro agregado correctamente");
+            
+            setVal('inputTitulo', '');
+            setVal('inputAutor', '');
+            setVal('inputIsbn', '');
+            renderizar();
+        }
+
+        function agregarSocio() {
+            const n = getVal('inputNombreSocio');
+            const id = getVal('inputIdSocio');
+
+            if (!n || !id) return alert("Complete nombre e ID");
+
+            registroSocios.push({ nombre: n, id: id, libros: [] });
+            guardarDatos();
+            alert("👤 Socio registrado");
+            
+            setVal('inputNombreSocio', '');
+            setVal('inputIdSocio', '');
+            renderizar();
+        }
+
+        function prestar() {
+            const isbn = getVal('inputIsbnPrestamo');
+            const id = getVal('inputIdPrestamo');
+
+            const l = inventarioLibros.find(x => x.isbn === isbn);
+            const s = registroSocios.find(x => x.id == id);
+
+            if (l && s && l.disponible) {
+                l.disponible = false;
+                s.libros.push(l.isbn);
+                registroHistorial.push({ 
+                    fecha: new Date().toLocaleTimeString(), 
+                    accion: "Préstamo", 
+                    libro: l.titulo, 
+                    socio: s.nombre 
+                });
+                guardarDatos();
+                alert("📕 Préstamo exitoso");
+                renderizar();
+            } else {
+                alert("Error: Verifique disponibilidad, ISBN o ID de socio");
+            }
+        }
+
+        function devolver() {
+            const isbn = getVal('inputIsbnPrestamo');
+            const id = getVal('inputIdPrestamo');
+
+            const l = inventarioLibros.find(x => x.isbn === isbn);
+            const s = registroSocios.find(x => x.id == id);
+
+            if (l && s) {
+                l.disponible = true;
+                s.libros = s.libros.filter(code => code !== l.isbn);
+                registroHistorial.push({ 
+                    fecha: new Date().toLocaleTimeString(), 
+                    accion: "Devolución", 
+                    libro: l.titulo, 
+                    socio: s.nombre 
+                });
+                guardarDatos();
+                alert("📗 Devolución exitosa");
+                renderizar();
+            } else {
+                alert("Datos incorrectos");
+            }
+        }
+
+        function limpiarHistorial() {
+            if(confirm("¿Borrar todo el historial?")) {
+                registroHistorial = [];
+                guardarDatos();
+                renderizar();
+            }
+        }
+
+        /* --- LÓGICA DE ELIMINACIÓN Y MEMORIA --- */
+        function eliminarLibro() {
+            const codigo = getVal('inputIsbn');
+            if (!codigo) return alert("Ingrese el ISBN a eliminar");
+
+            if (!confirm("¿Eliminar este libro y liberar memoria?")) return;
+
+            let actual = inventarioLibros.head;
+            let anterior = null;
+            let encontrado = false;
+
+            while (actual) {
+                if (actual.dato.isbn === codigo) {
+                    // 1. Destructor explícito (Simulación C++)
+                    actual.dato.destructor();
+
+                    // 2. Re-enlace de punteros
+                    if (anterior === null) {
+                        inventarioLibros.head = actual.next;
+                    } else {
+                        anterior.next = actual.next;
+                    }
+
+                    // 3. Liberación nodo
+                    actual.next = null;
+                    actual = null;
+                    
+                    console.log("[SISTEMA] Nodo eliminado de la lista enlazada.");
+                    encontrado = true;
+                    break;
+                }
+                anterior = actual;
+                actual = actual.next;
+            }
+
+            if (encontrado) {
+                guardarDatos();
+                alert("🗑 Libro eliminado y memoria liberada");
+                renderizar();
+            } else {
+                alert("❌ No se encontró el libro");
+            }
+        }
+
+        function eliminarSocio() {
+            const id = getVal('inputIdSocio');
+            if(!id) return alert("Ingrese ID");
+            
+            const idx = registroSocios.findIndex(s => s.id == id);
+            if (idx === -1) return alert("Socio no encontrado");
+            
+            if (registroSocios[idx].libros.length > 0) return alert("Tiene libros pendientes");
+
+            registroSocios.splice(idx, 1);
+            guardarDatos();
+            alert("Socio eliminado");
+            renderizar();
+        }
+
+        function renderizar() {
+            const divL = document.getElementById('divListaLibros');
+            divL.innerHTML = "";
+            inventarioLibros.each(l => {
+                if(l && l.titulo) divL.innerHTML += l.info() + "<br>";
+            });
+
+            const divS = document.getElementById('divListaSocios');
+            divS.innerHTML = registroSocios.map(s => `👤 <b>${s.nombre}</b> (ID:${s.id}) [${s.libros.length} libros]`).join("<br>");
+
+            const tbody = document.getElementById('tablaHistorial');
+            tbody.innerHTML = registroHistorial.map(h => `
+                <tr><td>${h.fecha}</td><td>${h.accion}</td><td>${h.libro}</td><td>${h.socio}</td></tr>
+            `).join("");
+        }
+
+        // Iniciar
+        renderizar();
+        mostrar('inicio');
+    </script>
+</body>
+</html>
